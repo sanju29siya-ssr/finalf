@@ -1,14 +1,10 @@
-const express = require('express');
-const router = express.Router();
-const Product = require('../models/productModel');
+const mongoose = require('mongoose');
 
-router.get('/', async (req, res) => {
-  try {
-    const products = await Product.find();
-    res.json(products);
-  } catch (err) {
-    res.status(500).json({ message: 'Error fetching products' });
-  }
+const productSchema = new mongoose.Schema({
+  name: String,
+  category: String,
+  price: Number,
+  image: String
 });
 
-module.exports = router;
+module.exports = mongoose.model('Product', productSchema);
