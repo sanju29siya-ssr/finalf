@@ -36,9 +36,10 @@ app.use('/api/cart', cartRoutes);
 
 // ✅ Default Route (stops Render from showing "Cannot GET /")
 app.get('/', (req, res) => {
-  res.send("✅ Backend is running. API base URL is /api/");
+  res.json({status:"Backend running", base: "/api" });
 });
 
 // Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
